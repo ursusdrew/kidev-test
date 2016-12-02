@@ -1,0 +1,223 @@
+<!doctype html>
+<html ng-app="demo">
+  <head>
+    <meta charset="utf-8">
+    <title>FE Skin Demo</title>
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.2.1/ui-bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+
+    <!-- ad tag begin -->
+    <script type="text/javascript">
+      (function() {
+        var id = "mfa_tag_" + Math.floor((Math.random() * 10e16));
+        var op = window[id] = {
+          /* EDITABLE: To include a click tracker paste your tracker macro/url below */
+          "plr_ClickURL" : "",
+          "srv_SectionID": "666804",
+          "srv_AdvertIDs": "2581447",
+          "plr_ClickURL": "http://click.test.com",
+          "plr_ImpressionURL": "http://impression.test.com"
+        }
+        var src = "//native.kidev1.manufactura.io/native/publishers/440012/default.js?autoload&id="+id;
+        if (document.readyState == 'loading') {
+          document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+        }
+        else {
+          op.async = true;
+          var script = document.createElement('script');
+          script.setAttribute('src', src);
+          document.getElementsByTagName('head')[0].appendChild(script);
+        }
+      })();
+    </script>
+    <!-- ad tag end -->
+
+    <script src="demo.js"></script>
+    <link href="demo.css" type="text/css" rel="stylesheet">
+  </head>
+  <body ng-controller="SettingsCtrl">
+    <div id="page" ng-class="{container: settings.layout == 'fixed', 'container-fluid': settings.layout == 'fluid'}" style="position: relative;" ng-style="pageStyles">
+      <div style="position: absolute; top: 100px; right: 100px; left: 100px;">
+        <form class="form-horizontal">
+          <div class="row" style="opacity: 1;">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading"><span class="lead">Page Settings</span></div>
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Type</label>
+                    <div class="col-sm-9">
+                      <label class="radio-inline">
+                        <input type="radio" value="fixed" ng-model="settings.layout">
+                        Fixed Width
+                      </label>
+                      <label class="radio-inline">
+                        <input type="radio" value="fluid" ng-model="settings.layout">
+                        Fluid
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Alignment</label>
+                    <div class="col-sm-9">
+                      <label class="radio-inline">
+                        <input type="radio" value="center" ng-model="settings.contentAlignment">
+                        Center
+                      </label>
+                      <label class="radio-inline">
+                        <input type="radio" value="left" ng-model="settings.contentAlignment">
+                        Left
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading"><span class="lead">Overlay</span></div>
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">URL</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" ng-model="settings.overlay.url">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" ng-model="settings.overlay.compatible">
+                          Compatible
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Size</label>
+                    <div class="col-sm-9">
+                      <div class="row">
+                        <div class="col-xs-6">
+                          <input type="text" class="form-control" placeholder="Width" ng-model="settings.overlay.width">
+                        </div>
+                        <div class="col-xs-6">
+                          <input type="text" class="form-control" placeholder="Height" ng-model="settings.overlay.height">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Close</label>
+                    <div class="col-sm-9">
+                      <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="settings.overlay.closeOnBackdropClick">
+                        Backdrop click
+                      </label>
+                      <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="settings.overlay.closeOnEscape">
+                        Escape
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Style</label>
+                    <div class="col-sm-9">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" ng-model="settings.overlay.chromeless">
+                          Chromeless
+                        </label>
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" ng-model="settings.overlay.transparentBackdrop">
+                          Transparent backdrop
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                      <button type="button" class="btn btn-default" ng-click="openOverlay($event)">Open</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading"><span class="lead">Frame Settings</span></div>
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Sides</label>
+                    <div class="col-sm-9">
+                      <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="settings.soT">
+                        Over Top
+                      </label>
+                      <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="settings.soB">
+                        Over Bottom
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Top</label>
+                    <div class="col-sm-9">
+                      <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="settings.ftExpand">
+                        Expand
+                      </label>
+                      <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="settings.ftFixed">
+                        Fixed
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Right</label>
+                    <div class="col-sm-9">
+                      <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="settings.frExpand">
+                        Expand
+                      </label>
+                      <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="settings.frFixed">
+                        Fixed
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Bottom</label>
+                    <div class="col-sm-9">
+                      <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="settings.fbExpand">
+                        Expand
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Left</label>
+                    <div class="col-sm-9">
+                      <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="settings.flExpand">
+                        Expand
+                      </label>
+                      <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="settings.flFixed">
+                        Fixed
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <img src="page.jpg" width="100%">
+    </div>
+  </body>
+</html>
