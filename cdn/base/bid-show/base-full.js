@@ -18190,7 +18190,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     */
 	    Native.prototype.makeAdCall = function (macro) {
 	        var _this = this;
-	        var url = "http://engine.adzerk.net/api/v2";
+	        var url = "https://engine.adzerk.net/api/v2";
 	        //    let flightId: string = macro.srv_AdvertIDs ? `"flightId": ${macro.srv_AdvertIDs},` : "";
 	        var userKey = this.getCookie("user") ? "\"user\": { \"key\": \"" + this.getCookie("user") + "\" }," : "";
 	        var adViews = this.getCookie("adViews") ? "\"flightViewTimes\": " + this.getCookie("adViews") + "," : "";
