@@ -582,7 +582,7 @@
         return src.match(/mfa_tag_\d+/g)
     }();
     integration.params = {
-        BASE_URL: "//native.kidev1.manufactura.io/cdn/base/bid-show",
+        BASE_URL: "//ursusdrew.github.io/kidev-test/cdn/base/bid-show",
         serverApi: "Native",
         tag: tag[0],
         contentWidth: 950
