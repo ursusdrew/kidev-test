@@ -18220,7 +18220,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            //         "adTypes": [163],
 	            //         "eventIds": [${eventIds.toString()}]
 	            // }]}`,
-	            data: "{\n                    " + userKey + "\n                    " + adViews + "\n                    \"time\": " + this.viewTime + ",\n                    \"placements\": [{\n                    \"divName\": \"ad\",\n                    \"siteId\": " + macro.srv_SectionID + ",\n                    \"adTypes\": [5],\n                    \"eventIds\": [" + eventIds.toString() + "]\n            }]}",
+	            data: "{\n                    " + userKey + "\n                    " + adViews + "\n                    \"time\": " + this.viewTime + ",\n                    \"placements\": [{\n                    \"divName\": \"ad\",\n                    \"siteId\": " + macro.srv_SectionID + ",\n                    \"adTypes\": [5, 163],\n                    \"eventIds\": [" + eventIds.toString() + "]\n            }]}",
 	            dataType: "json",
 	            type: "POST",
 	        }).then(function (response) {
